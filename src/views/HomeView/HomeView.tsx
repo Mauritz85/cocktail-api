@@ -1,43 +1,27 @@
-import { useEffect, useState } from "react";
 import { Card } from "../../components";
 import styles from "./HomeView.module.css";
-import type { Cocktail } from "../../types/cocktail";
-import { fetchRandomCocktail } from "../../api/api";
+import { Button } from "@mui/material";
+import { useCocktails } from "../../hooks/useCocktail";
 
 type HomeViewProps = {
   // props här
 };
 
 export default function HomeView({}: HomeViewProps) {
-  const [cocktail, setCocktail] = useState<Cocktail | null>(null);
-  const [loading, setLoading] = useState(true);
+  const { cocktails, loading, error, refetch } = useCocktails("random");
+  const cocktail = cocktails[0];
 
-  useEffect(() => {
-    const loadCocktail = async () => {
-      try {
-        const drink = await fetchRandomCocktail();
-        setCocktail(drink);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadCocktail();
-  }, []);
-
-  if (loading) return <p>Laddar...</p>;
-  if (!cocktail) return <p>Ingen cocktail hittades</p>;
   return (
     <div className={styles.homeview}>
-      {loading ? (
-        <p>Laddar...</p>
-      ) : !cocktail ? (
-        <p>Ingen cocktail hittades</p>
+      {!cocktail ? (
+        <p>{error}</p>
       ) : (
-        <Card cocktail={cocktail} />
+        <>
+          <h2>Roulette-drink</h2>
+          <Card cocktail={cocktail} loading={loading} />
+        </>
       )}
+      <Button onClick={refetch}>Snurra drinkhjulet igen!</Button>
     </div>
   );
 }
