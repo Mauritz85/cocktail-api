@@ -1,4 +1,4 @@
-export interface Cocktail {
+export interface IRawCocktail {
   idDrink: string;
   strDrink: string;
   strCategory: string;
@@ -6,9 +6,26 @@ export interface Cocktail {
   strGlass: string;
   strInstructions: string;
   strDrinkThumb: string;
-  [key: string]: any; // för dynamiska ingrediensfält
+  [key: string]: any;
 }
 
-export interface CocktailResponse {
-  drinks: Cocktail[];
+export interface IRawCocktailResponse {
+  drinks: IRawCocktail[];
+}
+
+interface IIngredient {
+  ingredient: string;
+  measure: string | null;
+}
+
+export interface ICocktail {
+  id: string;
+  name: string;
+  tags: string[];
+  category: string;
+  alcoholic: boolean;
+  glass: string;
+  instructions: string;
+  thumbnail: string;
+  ingredients: IIngredient[];
 }
