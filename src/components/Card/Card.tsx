@@ -1,7 +1,8 @@
-import { Button, Skeleton } from "@mui/material";
+import { Skeleton } from "@mui/material";
 import styles from "./Card.module.css";
 import { useState, useEffect } from "react";
 import type { ICocktail } from "../../types/cocktail";
+import { Link } from "react-router";
 
 type CardProps = {
   cocktail: ICocktail;
@@ -18,29 +19,28 @@ export default function Card({ cocktail }: CardProps) {
 
   return (
     <article className={styles.card}>
-      {imageLoading && (
+      {imageLoading ? (
         <>
           <Skeleton variant="rectangular" height={208} />
           <Skeleton variant="rounded" height={19} />
           <Skeleton variant="rounded" height={36} />
           <Skeleton variant="rounded" height={30} />
+          <img
+            src={cocktail.thumbnail}
+            alt={cocktail.name}
+            style={{ display: "none" }}
+            onLoad={() => setImageLoading(false)}
+            onError={() => setImageLoading(false)}
+          />
         </>
-      )}
-
-      {/* Bilden renderas alltid */}
-      <img
-        src={cocktail.thumbnail}
-        alt={cocktail.name}
-        style={{ display: imageLoading ? "none" : "block" }}
-        onLoad={() => setImageLoading(false)}
-        onError={() => setImageLoading(false)}
-      />
-
-      {!imageLoading && (
+      ) : (
         <>
-          <h4>{cocktail.name}</h4>
-          <p>{previewInstructions}</p>
-          <Button size="small">Se hela receptet</Button>
+          <div>
+            <img src={cocktail.thumbnail} alt={cocktail.name} />
+            <h4>{cocktail.name}</h4>
+            <p>{previewInstructions}</p>
+          </div>
+          <Link to={`cocktail/${cocktail.id}`}>Se hela receptet</Link>
         </>
       )}
     </article>

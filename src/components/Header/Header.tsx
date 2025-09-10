@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import styles from "./Header.module.css";
 
 type HeaderProps = {
@@ -7,7 +8,9 @@ type HeaderProps = {
 export default function Header({}: HeaderProps) {
   return (
     <div className={styles.header}>
-      <h1 className={styles.head}>Cocktailguiden</h1>
+      <Link to={"/"} style={{ textDecoration: "none", color: "black" }}>
+        <h1 className={styles.head}>Cocktailguiden</h1>
+      </Link>
     </div>
   );
 }
