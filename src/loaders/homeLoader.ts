@@ -1,4 +1,4 @@
-import { fetchRandomCocktail } from "../api/api";
+import { fetchRandomCocktail } from "../api";
 
 export async function homeLoader() {
   const cocktail = await fetchRandomCocktail();

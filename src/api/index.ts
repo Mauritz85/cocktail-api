@@ -31,3 +31,20 @@ export async function fetchCocktailById(
 
   return cocktail;
 }
+
+export async function fetchCocktailsByName(
+  query: string
+): Promise<IRawCocktail[]> {
+  const res = await fetch(
+    `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${query}`
+  );
+
+  if (!res.ok) {
+    throw new Error(`HTTP error! status: ${res.status}`);
+  }
+
+  const data: IRawCocktailResponse = await res.json();
+  const cocktails = data.drinks;
+
+  return cocktails ?? [];
+}

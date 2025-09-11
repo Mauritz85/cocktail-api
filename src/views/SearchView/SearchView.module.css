@@ -1,3 +1,22 @@
-.searchview {
-  /* styles for SearchView */
+.searchView {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.cardsGrid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }

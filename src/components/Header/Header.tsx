@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import styles from "./Header.module.css";
+import { SearchForm } from "..";
 
 type HeaderProps = {
   // props här
@@ -7,10 +8,11 @@ type HeaderProps = {
 
 export default function Header({}: HeaderProps) {
   return (
-    <div className={styles.header}>
+    <header className={styles.header}>
       <Link to={"/"}>
-        <h1>Cocktailguiden</h1>
+        <h1>[:Kåcktäjls:]</h1>
       </Link>
-    </div>
+      <SearchForm query="" />
+    </header>
   );
 }

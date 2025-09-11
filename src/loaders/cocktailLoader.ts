@@ -1,5 +1,5 @@
 import { type LoaderFunctionArgs } from "react-router";
-import { fetchCocktailById } from "../api/api";
+import { fetchCocktailById } from "../api";
 
 export async function cocktailLoader({ params }: LoaderFunctionArgs) {
   if (!params.Id) {

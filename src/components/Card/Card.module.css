@@ -1,6 +1,6 @@
 .card {
   width: 15rem;
-  height: 22rem;
+  height: 23rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -22,4 +22,5 @@
 
 .card a {
   align-self: center;
+  text-decoration: none;
 }

@@ -2,8 +2,9 @@
 import { createBrowserRouter } from "react-router";
 import App from "./App";
 import { homeLoader } from "./loaders/homeLoader";
-import { CocktailView, HomeView } from "./views";
+import { CocktailView, HomeView, SearchView } from "./views";
 import { cocktailLoader } from "./loaders/cocktailLoader";
+import { searchLoader } from "./loaders/searchLoader";
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +22,11 @@ export const router = createBrowserRouter([
         path: "cocktail/:Id",
         element: <CocktailView />,
         loader: cocktailLoader,
+      },
+      {
+        path: "search/",
+        element: <SearchView />,
+        loader: searchLoader,
       },
     ],
   },

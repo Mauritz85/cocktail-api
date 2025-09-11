@@ -5,17 +5,23 @@
 }
 
 .cocktailview img {
-  width: 20rem;
+  min-width: 100px;
+  max-width: 320px;
 }
 
 .cocktailview article {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 40%;
+  min-width: 100px;
+  max-width: 320px;
   gap: 1rem;
 }
 
 .cocktailview ul {
   padding-left: 1rem;
+}
+
+.cocktailview a {
+  text-decoration: none;
 }

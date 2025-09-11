@@ -1,6 +1,5 @@
-import { Card } from "../../components";
+import { Button, Card } from "../../components";
 import styles from "./HomeView.module.css";
-import { Button } from "@mui/material";
 import { useLoaderData, useRevalidator } from "react-router";
 import type { ICocktail } from "../../types/cocktail";
 

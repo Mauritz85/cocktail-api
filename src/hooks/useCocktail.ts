@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { fetchRandomCocktail } from "../api/api";
+import { fetchRandomCocktail } from "../api";
 import type { ICocktail } from "../types/cocktail";
 
 export function useRandomCocktail() {
